@@ -8,12 +8,38 @@ public class Paddle : MonoBehaviour
     [SerializeField] float xLimit = 7.6f;
     [SerializeField] float bigSizeTime = 10;
     [SerializeField] GameManager gameManager;
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] float fireRate = 1;
+    [SerializeField] float bulletsTime = 10;
+    [SerializeField] Vector3 bulletOffset;
+
+    public bool bulletsActive;
 
 
-    // Start is called before the first frame update
-    void Start()
+
+    public bool BulletsActive 
     {
-        
+        get => bulletsActive;
+        set {
+            bulletsActive = value;
+            StartCoroutine(ShootBullets());
+            Invoke("ResetBulletsActive", bulletsTime);
+        }
+    
+    }
+
+    void ResetBulletsActive() 
+    {
+        bulletsActive = false;
+    }
+
+    IEnumerator ShootBullets()
+    {
+        while (bulletsActive) 
+        {
+            Instantiate(bulletPrefab, transform.position + bulletOffset, Quaternion.identity);
+            yield return new WaitForSeconds(fireRate);
+        }
     }
 
     // Update is called once per frame
