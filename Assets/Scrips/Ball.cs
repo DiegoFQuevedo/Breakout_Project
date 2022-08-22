@@ -13,6 +13,20 @@ public class Ball : MonoBehaviour
     [SerializeField] AudioController audioController;
     [SerializeField] AudioClip bounceSfx;
 
+    bool superBall;
+    [SerializeField] float superBallTime = 5f;
+
+    public bool SuperBall 
+    {
+        get => superBall;
+        set { 
+            superBall = value;
+            if(superBall)
+            StartCoroutine(ResetSuperBall());
+        }
+    
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +58,12 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.transform.CompareTag("Brick") && superBall) 
+        {
+            rigidBody2d.velocity = currentVelocity;
+            return;
+        }
+
         moveDirection = Vector2.Reflect(currentVelocity, collision.GetContact(0).normal);
         rigidBody2d.velocity = moveDirection;
         audioController.PlaySfx(bounceSfx);
@@ -69,5 +89,11 @@ public class Ball : MonoBehaviour
 
         }
 
+    }
+
+    IEnumerator ResetSuperBall() 
+    {
+        yield return new WaitForSeconds(superBallTime);
+        superBall = false;
     }
 }
