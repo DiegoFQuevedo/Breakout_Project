@@ -99,6 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 7484631743932836658, guid: 01f3722fc3e67c54497ccd10d49cdf1f, type: 3}
+  powerUpsPrefabs:
+  - {fileID: 8861721026635951831, guid: 83553f94318716149983139eea6865b2, type: 3}
+  - {fileID: 1190116208888839258, guid: 1862f1ddb1bff1b43800ea74cd59b125, type: 3}
+  - {fileID: 2067744047862836714, guid: 451d837605b627043b765c2f5ccf98a3, type: 3}
 --- !u!60 &1168673516004478506
 PolygonCollider2D:
   m_ObjectHideFlags: 0

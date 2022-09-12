@@ -7,6 +7,8 @@ public class Brick : MonoBehaviour
     //GameObject gameManagerObj;
     GameManager gameManager;
     [SerializeField] GameObject explosionPrefab;
+    [SerializeField] GameObject[] powerUpsPrefabs;
+    [SerializeField] int powerUpChance = 20;
     private void Start()
     {
        /* gameManagerObj = GameObject.Find("GameManager");
@@ -32,5 +34,21 @@ public class Brick : MonoBehaviour
         }
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
+
+    }
+
+    private void OnDestroy()
+    {
+        if (gameManager.powerUpOnScene)
+            return;
+        int possibility = Random.Range(0, 100);
+
+        if (possibility < powerUpChance) 
+        {
+            int randomPowerUp = Random.Range(0, powerUpsPrefabs.Length);
+            Instantiate(powerUpsPrefabs[randomPowerUp], transform.position, Quaternion.identity);
+            gameManager.powerUpOnScene = true;
+        }
+        
     }
 }

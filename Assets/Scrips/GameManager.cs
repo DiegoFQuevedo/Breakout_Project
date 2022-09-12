@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     float gameTime;
     bool gameStarted;
     [SerializeField] UIController uiController;
+    public bool powerUpOnScene;
+    public bool powerUpIsActive;
 
     //public GameObject ball;
 

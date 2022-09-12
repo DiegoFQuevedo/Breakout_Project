@@ -31,6 +31,7 @@ public class Paddle : MonoBehaviour
     void ResetBulletsActive() 
     {
         bulletsActive = false;
+        gameManager.powerUpIsActive = false;
     }
 
     IEnumerator ShootBullets()
@@ -72,5 +73,6 @@ public class Paddle : MonoBehaviour
     {
         yield return new WaitForSeconds(bigSizeTime);
         transform.localScale = new Vector3(1, 1, 1);
+        gameManager.powerUpIsActive = false;
     }
 }

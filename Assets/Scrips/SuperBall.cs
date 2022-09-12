@@ -22,8 +22,25 @@ public class SuperBall : MonoBehaviour
             {
                 ball.SuperBall = true;
             }
+            GameManager gameManager = FindObjectOfType<GameManager>();
+            if (gameManager != null)
+            {
+                gameManager.powerUpIsActive = true;
+            }
 
-            Destroy(gameObject);
+                Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager gameManager = FindObjectOfType<GameManager>();
+        if (gameManager != null)
+        {
+            if (gameManager.powerUpOnScene)
+            {
+                gameManager.powerUpOnScene = false;
+            }
         }
     }
 }

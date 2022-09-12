@@ -14,7 +14,9 @@ public class Ball : MonoBehaviour
     [SerializeField] AudioClip bounceSfx;
 
     bool superBall;
-    [SerializeField] float superBallTime = 5f;
+    [SerializeField] float superBallTime = 10f;
+
+    float yMinSpeed = 2;
 
     public bool SuperBall 
     {
@@ -94,6 +96,7 @@ public class Ball : MonoBehaviour
     IEnumerator ResetSuperBall() 
     {
         yield return new WaitForSeconds(superBallTime);
+        gameManager.powerUpIsActive = false;
         superBall = false;
     }
 }

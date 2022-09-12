@@ -20,8 +20,27 @@ public class Bullets : MonoBehaviour
             if (paddle != null) 
             {
                 paddle.BulletsActive = true;
+                GameManager gameManager = FindObjectOfType<GameManager>();
+                if (gameManager != null)
+                {
+                    gameManager.powerUpIsActive = true;
+                }
             }
         
         }
     }
+
+    private void OnDestroy()
+    {
+        GameManager gameManager = FindObjectOfType<GameManager>();
+        if (gameManager != null)
+        {
+            if (gameManager.powerUpOnScene) 
+            {
+                gameManager.powerUpOnScene = false;
+            }
+        }
+    }
+
+
 }
