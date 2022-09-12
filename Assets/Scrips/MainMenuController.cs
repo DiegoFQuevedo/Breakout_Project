@@ -7,9 +7,18 @@ public class MainMenuController : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip buttonPressedSfx;
-    public void LoadGameScene() 
+    [SerializeField] GameObject loadGameButton;
+    void LoadGameScene() 
     {
         SceneManager.LoadScene("Game");
+    }
+
+    public void LoadSceneWithDelay(float delay) 
+    {
+        loadGameButton.SetActive (false);
+        audioSource.clip = buttonPressedSfx;
+        audioSource.Play();
+        Invoke("LoadGameScene", delay);
     }
 
     public void PlaySfx() 

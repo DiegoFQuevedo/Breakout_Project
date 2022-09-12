@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8861721026635951849}
   - component: {fileID: 8861721026635951830}
   - component: {fileID: -4133599588690063091}
+  - component: {fileID: -3531248101071014812}
+  - component: {fileID: 7746992641256341889}
   m_Layer: 0
   m_Name: BigSizePaddle
   m_TagString: Untagged
@@ -48,7 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51bf2fa6cbae114592e6db71baacadb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
 --- !u!50 &8861721026635951849
 Rigidbody2D:
   serializedVersion: 4
@@ -109,6 +110,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 5
+--- !u!114 &-3531248101071014812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8861721026635951831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9d30c59f722d94484bf3b4d4ad7be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7746992641256341889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8861721026635951831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07baba607da95be4a8160ec169b8b05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
 --- !u!1 &8861721028069889723
 GameObject:
   m_ObjectHideFlags: 0

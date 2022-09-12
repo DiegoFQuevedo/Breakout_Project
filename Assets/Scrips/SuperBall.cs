@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class SuperBall : MonoBehaviour
 {
-    [SerializeField] float speed = 5f;
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.Translate(Vector2.down * Time.deltaTime * speed);
-    }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,25 +15,15 @@ public class SuperBall : MonoBehaviour
             {
                 ball.SuperBall = true;
             }
-            GameManager gameManager = FindObjectOfType<GameManager>();
-            if (gameManager != null)
+            //GameManager gameManager = FindObjectOfType<GameManager>();
+            if (GameManager.Instance != null)
             {
-                gameManager.powerUpIsActive = true;
+                GameManager.Instance.powerUpIsActive = true;
             }
 
                 Destroy(gameObject);
         }
     }
 
-    private void OnDestroy()
-    {
-        GameManager gameManager = FindObjectOfType<GameManager>();
-        if (gameManager != null)
-        {
-            if (gameManager.powerUpOnScene)
-            {
-                gameManager.powerUpOnScene = false;
-            }
-        }
-    }
+   
 }

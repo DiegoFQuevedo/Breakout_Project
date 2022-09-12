@@ -9,6 +9,7 @@ public class Brick : MonoBehaviour
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] GameObject[] powerUpsPrefabs;
     [SerializeField] int powerUpChance = 20;
+    bool isQuitting;
     private void Start()
     {
        /* gameManagerObj = GameObject.Find("GameManager");
@@ -37,8 +38,16 @@ public class Brick : MonoBehaviour
 
     }
 
+    
+    private void OnApplicationQuit()
+    {
+        isQuitting = true;
+    }
+
     private void OnDestroy()
     {
+        if (isQuitting) return;
+
         if (gameManager.powerUpOnScene)
             return;
         int possibility = Random.Range(0, 100);

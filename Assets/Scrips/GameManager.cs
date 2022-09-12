@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     
     int bricksOnLevel;
     [SerializeField] int playerLives = 3;
@@ -15,6 +16,14 @@ public class GameManager : MonoBehaviour
     public bool powerUpIsActive;
 
     //public GameObject ball;
+
+    private void Awake()
+    {
+        if (Instance == null) 
+        {
+            Instance = this;
+        }
+    }
 
     public int BricksOnLevel 
     {
@@ -57,5 +66,13 @@ public class GameManager : MonoBehaviour
             gameTime = Time.time;
         }
     
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            Application.Quit();
+        }
     }
 }

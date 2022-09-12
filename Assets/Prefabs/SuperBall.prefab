@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2067744047862836713}
   - component: {fileID: 2067744047862836718}
   - component: {fileID: 799862696420101613}
+  - component: {fileID: -4103370952858505689}
+  - component: {fileID: -1350896655342406430}
   m_Layer: 0
   m_Name: SuperBall
   m_TagString: Untagged
@@ -95,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007cf762c2a33a94a95d0d5c91907f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
 --- !u!114 &799862696420101613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +110,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 5
+--- !u!114 &-4103370952858505689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067744047862836714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9d30c59f722d94484bf3b4d4ad7be6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1350896655342406430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067744047862836714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07baba607da95be4a8160ec169b8b05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
 --- !u!1 &2067744048581752549
 GameObject:
   m_ObjectHideFlags: 0

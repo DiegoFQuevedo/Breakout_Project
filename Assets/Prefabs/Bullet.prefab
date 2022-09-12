@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5842225227881243235}
   - component: {fileID: 5030118466658392499}
   - component: {fileID: -6211876704897394188}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.019800395}
@@ -109,7 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 561567158476140537}
   - component: {fileID: 561567158476140536}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BreakoutSprites_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}

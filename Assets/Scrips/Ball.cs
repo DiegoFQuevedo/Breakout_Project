@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour
     Vector2 moveDirection;
     Vector2 currentVelocity;
     [SerializeField] float ballSpeed = 5;
-    GameManager gameManager;
+   // GameManager gameManager;
     Transform paddle;
     [SerializeField] AudioController audioController;
     [SerializeField] AudioClip bounceSfx;
@@ -16,7 +16,8 @@ public class Ball : MonoBehaviour
     bool superBall;
     [SerializeField] float superBallTime = 10f;
 
-    float yMinSpeed = 2;
+    [SerializeField] float yMinSpeed = 2;
+    [SerializeField] TrailRenderer trailRenderer;
 
     public bool SuperBall 
     {
@@ -34,20 +35,20 @@ public class Ball : MonoBehaviour
     {
         //rigidBody2d = GetComponent<Rigidbody2D>();
         //rigidBody2d.velocity = Vector2.up * ballSpeed;
-        gameManager = FindObjectOfType<GameManager>();
+        GameManager.Instance = FindObjectOfType<GameManager>();
         paddle = transform.parent;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !gameManager.ballIsOnPlay) 
+        if (Input.GetMouseButtonDown(0) && !GameManager.Instance.ballIsOnPlay) 
         {
             rigidBody2d.velocity = Vector2.up * ballSpeed;
             transform.parent = null;
-            gameManager.ballIsOnPlay = true;
-            if (!gameManager.GameStarted) 
+            GameManager.Instance.ballIsOnPlay = true;
+            if (!GameManager.Instance.GameStarted) 
             {
-                gameManager.GameStarted = true;
+                GameManager.Instance.GameStarted = true;
             }
         }
     }
@@ -67,22 +68,26 @@ public class Ball : MonoBehaviour
         }
 
         moveDirection = Vector2.Reflect(currentVelocity, collision.GetContact(0).normal);
+        if (Mathf.Abs(moveDirection.y) < yMinSpeed) 
+        {
+            moveDirection.y = yMinSpeed * Mathf.Sign(moveDirection.y);
+        }
         rigidBody2d.velocity = moveDirection;
         audioController.PlaySfx(bounceSfx);
 
         if (collision.transform.CompareTag("BottomLimit")) 
         {
-            if (gameManager != null)
+            if (GameManager.Instance != null)
             {
-                gameManager.PlayerLives--;
+                GameManager.Instance.PlayerLives--;
 
-                if (gameManager.PlayerLives > 0) 
+                if (GameManager.Instance.PlayerLives > 0) 
                 {
                     rigidBody2d.velocity = Vector2.zero;//detenemos la velociad
                  // transform.parent = paddle;
                     transform.SetParent(paddle);//la hacemos hija del paddle
                     transform.localPosition = new Vector2(0, 0.62f);//asignamos posicion 
-                    gameManager.ballIsOnPlay = false;
+                    GameManager.Instance.ballIsOnPlay = false;
 
                 }
                 
@@ -95,8 +100,10 @@ public class Ball : MonoBehaviour
 
     IEnumerator ResetSuperBall() 
     {
+        trailRenderer.enabled = true;
         yield return new WaitForSeconds(superBallTime);
-        gameManager.powerUpIsActive = false;
+        trailRenderer.enabled = false;
+        GameManager.Instance.powerUpIsActive = false;
         superBall = false;
     }
 }
